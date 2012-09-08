@@ -7,11 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-
+<header>
 	<div id="user_nav">
 	  <% if user_signed_in? %>
+	    <%= current_user.attributes %>
+	    <%= user_session %>
 	    Logged in as <strong><%= current_user.email %></strong>.
 	    <%= link_to 'Edit profile', edit_user_registration_path %> |
 	    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
@@ -21,8 +21,14 @@
 	    <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
 	  <% end %>
 	</div>
-
-	<%= yield %>
-
+</header>
+<span class="notice"><%= notice %></span>
+<span class="alert"><%= alert %></span>
+<div class="wrapper">
+<%= yield %>
+</div>
+<footer>
+	GreenChat &copy;2012 GreenChat, LLC.
+</footer>
 </body>
 </html>
