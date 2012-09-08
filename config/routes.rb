@@ -1,4 +1,20 @@
 Sprout::Application.routes.draw do
+  resources :blogs
+
+  resources :comments
+
+  resources :tags
+
+  resources :photos
+
+  resources :trips
+
+  resources :posts
+
+  resources :messages
+
+  resources :chats
+
   resources :categories
 
   get "users/index"
