@@ -10,6 +10,8 @@ gem 'devise'
 gem 'thin'
 gem 'omniauth-twitter'
 
+gem 'activeadmin'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -20,6 +22,10 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  gem 'therubyracer'
 end
 
 gem 'jquery-rails'
