@@ -403,3 +403,6 @@ header a {
 header a:visited {
     color: #ffff00;
 }
+.wrapper {
+	padding: 20px;
+}
