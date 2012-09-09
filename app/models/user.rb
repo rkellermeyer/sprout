@@ -9,6 +9,27 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username
   # attr_accessible :title, :body
   
+  has_many :blogs
+  has_many :comments
+  has_many :messages, through: :chats
+  has_many :photos, through: :trips
+  has_many :posts, through: :blogs
+  has_many :tags, through: :photos
+  has_many :trips
+
+  has_and_belongs_to_many :categories
+  has_and_belongs_to_many :chats
+  
+=begin
+  accepts_nested_attributes_for :blog, allow_destroy: :true
+  accepts_nested_attributes_for :chat, allow_destroy: :true
+  accepts_nested_attributes_for :message, allow_destroy: :true
+  accepts_nested_attributes_for :photo, allow_destroy: :true
+  accepts_nested_attributes_for :post, allow_destroy: :true
+  accepts_nested_attributes_for :tag, allow_destroy: :true
+  accepts_nested_attributes_for :trip, allow_destroy: :true
+=end
+  
   validates_presence_of :username
   validates_uniqueness_of :username
   

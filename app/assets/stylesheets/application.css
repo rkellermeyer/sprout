@@ -393,4 +393,13 @@ body {
 header {
 	background: #3B4859;
 	color: #FFF;
+    padding: 10px;
+}
+
+header a {
+    color: #f0f0f0;
+}
+
+header a:visited {
+    color: #ffff00;
 }

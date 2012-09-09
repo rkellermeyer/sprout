@@ -1,4 +1,6 @@
 Sprout::Application.routes.draw do
+  resources :albums
+
   resources :blogs
 
   resources :comments
