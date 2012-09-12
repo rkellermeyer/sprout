@@ -9,29 +9,22 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username
   # attr_accessible :title, :body
   
-  has_many :blogs
-  has_many :comments
-  has_many :messages, through: :chats
-  has_many :photos, through: :trips
-  has_many :posts, through: :blogs
-  has_many :tags, through: :photos
-  has_many :trips
-
-  has_and_belongs_to_many :categories
+  has_one :avatar
   has_and_belongs_to_many :chats
+  has_many :messages
   
-=begin
-  accepts_nested_attributes_for :blog, allow_destroy: :true
-  accepts_nested_attributes_for :chat, allow_destroy: :true
-  accepts_nested_attributes_for :message, allow_destroy: :true
-  accepts_nested_attributes_for :photo, allow_destroy: :true
-  accepts_nested_attributes_for :post, allow_destroy: :true
-  accepts_nested_attributes_for :tag, allow_destroy: :true
-  accepts_nested_attributes_for :trip, allow_destroy: :true
-=end
-  
+  accepts_nested_attributes_for :avatar, allow_destroy: true
+  accepts_nested_attributes_for :chats, allow_destroy: true
+  accepts_nested_attributes_for :messages, allow_destroy: true
+
   validates_presence_of :username
   validates_uniqueness_of :username
+  
+  def has_chats?
+      chats.count > 0
+  end
+  
+  private
   
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|

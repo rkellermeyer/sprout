@@ -1,0 +1,7 @@
+- if message
+	%li{ :class => cycle('even', 'odd') }
+		%p= message.content
+		%span= message.user.username
+		%span= time_ago_in_words(message.created_at)
+- else
+	%p No Messages, create one below ...

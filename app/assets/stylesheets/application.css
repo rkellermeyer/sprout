@@ -120,7 +120,10 @@ a:hover {
 h1 {
     font-size: 2em;
 }
-
+h5 {
+	padding: 0;
+	margin: 0;
+}
 /*
  * Addresses styling not present in IE 8/9, Safari 5, and Chrome.
  */
@@ -255,7 +258,7 @@ figure {
  */
 
 fieldset {
-    border: 1px solid #c0c0c0;
+    border: 1px solid #FFFFFF;
     margin: 0 2px;
     padding: 0.35em 0.625em 0.75em;
 }
@@ -387,8 +390,19 @@ table {
     border-spacing: 0;
 }
 /* End Normalizer CSS */
+
+/* ==========================================================================
+   General Styles
+   ========================================================================== */
 body {
 	font-size: .7em;
+}
+ul, ol, li {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style-type: none;
 }
 header {
 	background: #3B4859;
@@ -405,4 +419,19 @@ header a:visited {
 }
 .wrapper {
 	padding: 20px;
+}
+.gidget {
+	border: 1px solid #333;
+	display: inline-block;
+	height: auto;
+	padding: 0px;
+	margin: 20px auto;
+	width: 29.32%;
+}
+.gidget header {
+	padding: 5px;
+}
+
+.gidget ul:first-of-type {
+    padding: 5px;
 }

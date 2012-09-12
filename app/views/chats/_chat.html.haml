@@ -1,0 +1,10 @@
+- if current_user.has_chats?
+	%header
+		%h5= "Chats: #{current_user.chats.count}"
+	= render partial: "chats/item", collection: current_user.chats, as: :chat
+- else
+	%header
+		%h5 Create A Chat
+	= semantic_form_for [@user, @chat], remote: :true do |f|
+		= f.inputs
+		= f.actions

@@ -1,0 +1,16 @@
+%ul.chat
+	%li
+		= chat.title
+		%br
+		= chat.description
+		%ol.chat_list
+			= render partial: "users/message", collection: chat.messages
+		= semantic_form_for :message, html: { url: new_message_path(chat.id), method: :post }, remote: true do |f|
+			= f.input :chat_id, as: :hidden, label: :false, value: chat.id
+			= f.input :user_id, as: :hidden, label: :false, value: current_user.id
+			= f.input :content, input_html: { rows: 3, cols: 37 }, as: :text, label: false
+			= f.actions
+
+//= link_to "Edit", edit_chat_path(@chat)
+//= link_to "Destroy", @chat, :confirm => 'Are you sure?', :method => :delete
+//= link_to "View All", chats_path

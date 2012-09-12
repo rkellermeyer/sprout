@@ -1,0 +1,39 @@
+%html
+	%head
+		%title Sprout
+		= stylesheet_link_tag "application", media: :all
+		= javascript_include_tag "application"
+		= csrf_meta_tags
+%body{"data-user" => user_signed_in? ? "#{current_user.id}" : "no_user"}
+	%header>
+		#user_nav
+			- if user_signed_in?
+				//= current_user.attributes
+				//= user_session
+				%span Logged in as
+				= current_user.email
+				= link_to 'Edit profile', edit_user_registration_path
+				= link_to "Logout", destroy_user_session_path, method: :delete
+			- else
+				= link_to "Sign up", new_user_registration_path
+				= link_to "Login", new_user_session_path
+				= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+			= notice
+			= alert
+.wrapper
+	= yield
+%section{ class: "rate_my gidget" }
+	= render partial: "chats/chat" if current_user
+%section{ class: "chats gidget" }
+
+%section{ class: "trips gidget" }
+
+%section{ class: "blogs gidget" }
+
+%section{ class: "deals gidget" }
+
+%section{ class: "social gidget" }
+
+	
+%footer
+	GreenChat &copy;2012 GreenChat, LLC.

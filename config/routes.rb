@@ -1,4 +1,6 @@
 Sprout::Application.routes.draw do
+  resources :avatars
+
   resources :albums
 
   resources :blogs
@@ -15,15 +17,20 @@ Sprout::Application.routes.draw do
 
   resources :messages
 
-  resources :chats
+  resources :chats do
+    resources :messages
+  end
 
   resources :categories
 
-  get "users/index"
+  # get "users/index"
 
  # devise_for :users
 
-   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: {omniauth_callbacks: "omniauth_callbacks"} do
+     resources :chats
+     resources :messages
+   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

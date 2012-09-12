@@ -11,7 +11,17 @@ gem 'thin'
 gem 'omniauth-twitter'
 
 gem 'activeadmin'
+gem 'cocoon'
 gem 'cancan'
+gem 'haml'
+gem 'has_scope'
+
+gem 'ransack'
+
+# Handle Images
+gem "rmagick"
+gem 'carrierwave'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -25,6 +35,7 @@ group :assets do
 end
 
 group :development do
+  gem 'haml-rails'
   gem 'therubyracer'
 end
 
